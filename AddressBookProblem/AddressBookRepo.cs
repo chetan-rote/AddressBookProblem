@@ -157,13 +157,36 @@ namespace AddressBookProblem
             contact.Email = email;
         }
 
+
+        public void DeleteContact()
+        {
+            Console.WriteLine("Enter the first name of person whose data to be modified: ");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Enter the email of person whose data to be modified: ");
+            string email = Console.ReadLine();
+            for (int index = 0; index < contacts.Count; index++)
+            {
+                if (contacts[index].FirstName.Equals(firstName) && contacts[index].Email.Equals(email))
+                {
+                    contacts.RemoveAt(index);
+                    Console.WriteLine("Contact Deleted Successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("No such contact present.");
+                }
+            }
+        }
+        /// <summary>
+        /// Addresses the book menu.
+        /// </summary>
         public void AddressBookMenu()
         {
             int loop = 1;
             while (loop == 1)
             {
                 Console.WriteLine("\nEnter Your Choice");
-                Console.WriteLine("\n1.Add Contact. \n2.Display \n3.Edit Contact. \n4 Exit.");
+                Console.WriteLine("\n1.Add Contact. \n2.Display \n3.Edit Contact. \n4.Delete Contact. \n5 Exit.");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -177,6 +200,9 @@ namespace AddressBookProblem
                         EditContact();
                         break;
                     case 4:
+                        DeleteContact();
+                        break;
+                    case 5:
                         Environment.Exit(0);
                         break;
                     default:
