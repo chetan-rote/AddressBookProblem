@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AddressBookProblem
 {
-    class ContactModel
+    public class ContactModel
     {
         /// Variables.
         private string firstName;
@@ -15,6 +15,33 @@ namespace AddressBookProblem
         private string zipCode;
         private string phoneNumber;
         private string email;
+
+        public ContactModel()
+        { 
+
+        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContactModel"/> class.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="address">The address.</param>
+        /// <param name="city">The city.</param>
+        /// <param name="state">The state.</param>
+        /// <param name="zipCode">The zip code.</param>
+        /// <param name="phoneNumber">The phone number.</param>
+        /// <param name="email">The email.</param>
+        public ContactModel(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNumber, string email)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
+            this.city = city;
+            this.state = state;
+            this.zipCode = zipCode;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        }        
         /// <summary>
         /// Gets or sets the first name.
         /// </summary>
@@ -24,7 +51,7 @@ namespace AddressBookProblem
         /// <exception cref="System.ArgumentNullException">FirstName - Value for first name cannot be null or empty</exception>
         public string FirstName
         {
-            get 
+            get
             {
                 return this.firstName;
             }
@@ -36,7 +63,7 @@ namespace AddressBookProblem
                 }
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException(nameof(FirstName),"Value for first name cannot be null or empty");
+                    throw new ArgumentNullException(nameof(FirstName), "Value for first name cannot be null or empty");
                 }
             }
         }
@@ -97,7 +124,7 @@ namespace AddressBookProblem
         /// The city.
         /// </value>
         /// <exception cref="System.ArgumentNullException">City - Value for City cannot be null or empty</exception>
-        public string City 
+        public string City
         {
             get
             {
@@ -147,7 +174,7 @@ namespace AddressBookProblem
         /// The zip code.
         /// </value>
         /// <exception cref="System.ArgumentNullException">ZipCode - Value for zipcode cannot be null or empty</exception>
-        public string ZipCode 
+        public string ZipCode
         {
             get
             {
@@ -172,7 +199,7 @@ namespace AddressBookProblem
         /// The phone number.
         /// </value>
         /// <exception cref="System.ArgumentNullException">PhoneNumber - Value for Phone no cannot be null or empty</exception>
-        public string PhoneNumber 
+        public string PhoneNumber
         {
             get
             {
@@ -197,7 +224,7 @@ namespace AddressBookProblem
         /// The email.
         /// </value>
         /// <exception cref="System.ArgumentNullException">Email - Email cannot be null or empty</exception>
-        public string Email 
+        public string Email
         {
             get
             {
@@ -214,6 +241,12 @@ namespace AddressBookProblem
                     throw new ArgumentNullException(nameof(Email), "Email cannot be null or empty");
                 }
             }
+        }
+
+        override
+        public string ToString()
+        {
+            return $"First Name : {FirstName} , LastName : {LastName} , Address : {Address} , City : {City} , State : {State} , Zip : {ZipCode} , MobileNumber : {PhoneNumber} , Email : {Email}";
         }
     }
 }
