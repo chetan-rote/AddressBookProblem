@@ -21,8 +21,7 @@ namespace AddressBookProblem
         {
             Console.WriteLine("Welcome to Address Book Problem.");
             AddressBookRepo repo = new AddressBookRepo();
-            repo.AddContact();
-            repo.DisplayContact();
+            repo.AddressBookMenu();
         }
     }
 }
