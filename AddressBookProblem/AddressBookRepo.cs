@@ -8,8 +8,6 @@ namespace AddressBookProblem
     {
         List<ContactModel> contacts = new List<ContactModel>();
         RegexValidator regexValidator = new RegexValidator();
-
-
         /// <summary>
         /// Adds the contact.
         /// </summary>
@@ -77,15 +75,24 @@ namespace AddressBookProblem
         /// </summary>
         public void DisplayContact()
         {
+            // Checks for the count of contacts in List
             if (contacts.Count == 0)
             {
                 Console.WriteLine("No Contacts to display");
             }
             else
             {
+                // Iterates the List to display contacts.
                 foreach (var display in contacts)
                 {
-                    Console.WriteLine(display);
+                    Console.WriteLine("First Name   : " + display.FirstName);
+                    Console.WriteLine("Last Name    : " + display.LastName);
+                    Console.WriteLine("Address      : " + display.Address);
+                    Console.WriteLine("Zipcode      : " + display.ZipCode);
+                    Console.WriteLine("City         : " + display.City);
+                    Console.WriteLine("State        : " + display.State);
+                    Console.WriteLine("Phone Number : " + display.PhoneNumber);
+                    Console.WriteLine("Email        : " + display.Email);
                 }
             }
         }
@@ -98,8 +105,10 @@ namespace AddressBookProblem
             string firstName = Console.ReadLine();
             Console.WriteLine("Enter the email of person whose data to be modified: ");
             string email = Console.ReadLine();
+            // Iterates the List with contacts.
             for (int index = 0; index < contacts.Count; index++)
             {
+                // Checks with first name and email present in the data.
                 if (contacts[index].FirstName.Equals(firstName) && contacts[index].Email.Equals(email))
                 {
                     EditContactList(contacts[index]);
@@ -156,16 +165,19 @@ namespace AddressBookProblem
             regexValidator.ValidateEmail(email);
             contact.Email = email;
         }
-
-
+        /// <summary>
+        /// Deletes the contact.
+        /// </summary>
         public void DeleteContact()
         {
             Console.WriteLine("Enter the first name of person whose data to be modified: ");
             string firstName = Console.ReadLine();
             Console.WriteLine("Enter the email of person whose data to be modified: ");
             string email = Console.ReadLine();
+            // Iterates the List with contacts.
             for (int index = 0; index < contacts.Count; index++)
             {
+                // Checks with first name and email present in the data.
                 if (contacts[index].FirstName.Equals(firstName) && contacts[index].Email.Equals(email))
                 {
                     contacts.RemoveAt(index);
