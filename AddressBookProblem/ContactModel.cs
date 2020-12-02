@@ -31,14 +31,14 @@ namespace AddressBookProblem
         /// <param name="zipCode">The zip code.</param>
         /// <param name="phoneNumber">The phone number.</param>
         /// <param name="email">The email.</param>
-        public ContactModel(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNumber, string email)
+        public ContactModel(string firstName, string lastName, string address, string zipCode, string city, string state,  string phoneNumber, string email)
         {
             this.firstName = firstName;
             this.lastName = lastName;
             this.address = address;
-            this.city = city;
-            this.state = state;
             this.zipCode = zipCode;
+            this.city = city;
+            this.state = state;           
             this.phoneNumber = phoneNumber;
             this.email = email;
         }        
@@ -118,6 +118,31 @@ namespace AddressBookProblem
             }
         }
         /// <summary>
+        /// Gets or sets the zip code.
+        /// </summary>
+        /// <value>
+        /// The zip code.
+        /// </value>
+        /// <exception cref="System.ArgumentNullException">ZipCode - Value for zipcode cannot be null or empty</exception>
+        public string ZipCode
+        {
+            get
+            {
+                return this.zipCode;
+            }
+            set
+            {
+                if (this.zipCode == value)
+                {
+                    return;
+                }
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException(nameof(ZipCode), "Value for zipcode cannot be null or empty");
+                }
+            }
+        }
+        /// <summary>
         /// Gets or sets the city.
         /// </summary>
         /// <value>
@@ -166,32 +191,7 @@ namespace AddressBookProblem
                     throw new ArgumentNullException(nameof(state), "Value for state cannot be null or empty");
                 }
             }
-        }
-        /// <summary>
-        /// Gets or sets the zip code.
-        /// </summary>
-        /// <value>
-        /// The zip code.
-        /// </value>
-        /// <exception cref="System.ArgumentNullException">ZipCode - Value for zipcode cannot be null or empty</exception>
-        public string ZipCode
-        {
-            get
-            {
-                return this.zipCode;
-            }
-            set
-            {
-                if (this.zipCode == value)
-                {
-                    return;
-                }
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentNullException(nameof(ZipCode), "Value for zipcode cannot be null or empty");
-                }
-            }
-        }
+        }        
         /// <summary>
         /// Gets or sets the phone number.
         /// </summary>
@@ -242,7 +242,12 @@ namespace AddressBookProblem
                 }
             }
         }
-
+        /// <summary>
+        /// Converts to string.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
         override
         public string ToString()
         {
