@@ -7,7 +7,8 @@ namespace AddressBookProblem
     public class MultipleAddressBook
     {
         AddressBookRepo addressBookRepo = new AddressBookRepo();
-        Dictionary<string, AddressBookRepo> addressBooks = new Dictionary<string, AddressBookRepo>();
+        public Dictionary<string, AddressBookRepo> addressBooks = new Dictionary<string, AddressBookRepo>();
+        Dictionary<string, AddressBookRepo> AddressBookDictionary { get { return addressBooks; } }
         /// <summary>
         /// Adds the new address book.
         /// </summary>
@@ -20,12 +21,29 @@ namespace AddressBookProblem
             if (this.addressBooks.ContainsKey(addressBookName))
             {
                 Console.WriteLine("Address book already exists");
-                addressBookRepo.AddressBookMenu();
+                addressBookRepo.ContactMenu();
             }
             else
             {
                 Console.WriteLine("New Address book created: ");
                 addressBooks.Add(addressBookName, addressBookRepo);
+            }
+        }
+        /// <summary>
+        /// Displays the address book.
+        /// </summary>
+        public void DisplayAddressBook()
+        {
+            if (addressBooks.Count == 0)
+            {
+                Console.WriteLine("No address book to display");
+            }
+            else
+            {
+                foreach (var book in addressBooks)
+                {
+                    Console.WriteLine(book.Key);
+                }
             }
         }
         /// <summary>
@@ -37,7 +55,7 @@ namespace AddressBookProblem
             string addressBookName = Console.ReadLine();
             if (addressBooks.ContainsKey(addressBookName))
             {
-                addressBooks[addressBookName].AddressBookMenu();
+                addressBooks[addressBookName].ContactMenu();
             }
             else
             {
@@ -47,13 +65,13 @@ namespace AddressBookProblem
         /// <summary>
         /// Menu for the address book.
         /// </summary>
-        public void Menu()
+        public void BookMenu()
         {
             int loop = 1;
             while (loop == 1)
             {
                 Console.WriteLine("\nEnter your choice");
-                Console.WriteLine("\n1.Add Address Book. \n2. Use Address Book. \n3. Exit.");
+                Console.WriteLine("\n1. Add Address Book. \n2. Use Address Book. \n3. Display AddressBooks. \n4. Exit.");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -64,6 +82,9 @@ namespace AddressBookProblem
                         UseAddressBook();
                         break;
                     case 3:
+                        DisplayAddressBook();
+                        break;
+                    case 4:
                         Environment.Exit(0);
                         break;
                     default:
