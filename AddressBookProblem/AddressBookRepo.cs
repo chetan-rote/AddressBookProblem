@@ -4,9 +4,10 @@ using System.Text;
 
 namespace AddressBookProblem
 {
-    class AddressBookRepo
+    public class AddressBookRepo
     {
         List<ContactModel> contacts = new List<ContactModel>();
+        
         RegexValidator regexValidator = new RegexValidator();
         /// <summary>
         /// Adds the contact.

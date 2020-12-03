@@ -20,8 +20,8 @@ namespace AddressBookProblem
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book Problem.");
-            AddressBookRepo repo = new AddressBookRepo();
-            repo.AddressBookMenu();
+            MultipleAddressBook book = new MultipleAddressBook();
+            book.Menu();
         }
     }
 }
