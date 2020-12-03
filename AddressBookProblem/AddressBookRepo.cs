@@ -93,7 +93,7 @@ namespace AddressBookProblem
                     Console.WriteLine("City         : " + display.City);
                     Console.WriteLine("State        : " + display.State);
                     Console.WriteLine("Phone Number : " + display.PhoneNumber);
-                    Console.WriteLine("Email        : " + display.Email);
+                    Console.WriteLine("\nEmail        : " + display.Email);
                 }
             }
         }
@@ -193,13 +193,15 @@ namespace AddressBookProblem
         /// <summary>
         /// Addresses the book menu.
         /// </summary>
-        public void AddressBookMenu()
+        public void ContactMenu()
         {
             int loop = 1;
+            MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
             while (loop == 1)
             {
                 Console.WriteLine("\nEnter Your Choice");
-                Console.WriteLine("\n1.Add Contact. \n2.Display \n3.Edit Contact. \n4.Delete Contact. \n5 Exit.");
+                Console.WriteLine("\n1. Add Contact. \n2. Display \n3. Edit Contact. \n4. Delete Contact. \n5. To addressbook menu." +
+                                  " \n6. Exit.");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -216,6 +218,9 @@ namespace AddressBookProblem
                         DeleteContact();
                         break;
                     case 5:
+                        multipleAddressBook.BookMenu();
+                        break;
+                    case 6:
                         Environment.Exit(0);
                         break;
                     default:

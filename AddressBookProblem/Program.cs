@@ -21,7 +21,7 @@ namespace AddressBookProblem
         {
             Console.WriteLine("Welcome to Address Book Problem.");
             MultipleAddressBook book = new MultipleAddressBook();
-            book.Menu();
+            book.BookMenu();
         }
     }
 }
